@@ -3,13 +3,11 @@ import matplotlib.pyplot as plt
 from piotroski_f_score import FScore as fscore
 from client import Client as client
 
-
-
 class Utils:
-  def getScores(symbols,year,periods):
+  def getScores(symbols,args):
     result = []
     for symbol in symbols:
-      data = client.getDataISYatirim("MaliTablo",{"stock_name":symbol,"year":year,"periods":periods})["value"]
+      data = client.getDataISYatirim("MaliTablo",{"stock_name":symbol,"args":args})["value"]
       all_scores = fscore.piotroski_f_score(data)
       result.append({'Score':all_scores[0],'Stock':symbol})
 
