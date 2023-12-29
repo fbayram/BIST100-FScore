@@ -19,16 +19,23 @@ class Client:
       'balance_sheet': stock.balance_sheet,
        'cash_flow': stock.cash_flow
     }
-  def getDataISYatirim(req,args):
+  def getDataISYatirim(req,prms):
     base_uri = "https://www.isyatirim.com.tr/_layouts/15/IsYatirim.Website/Common"
     
-    last_year = args["year"]
-    
-    if args["periods"][3] == 12: last_year = last_year - 1
 
     if req == "MaliTablo":
         query = "/Data.aspx/MaliTablo?companyCode={}&exchange=TRY&financialGroup=XI_29&year1={}&period1={}&year2={}&period2={}&year3={}&period3={}&year4={}&period4={}&_=1703768818811"
-        query = query.format(args["stock_name"],args["year"],args["periods"][0],args["year"],args["periods"][1],args["year"],args["periods"][2],last_year,args["periods"][3])
+        query = query.format(
+          prms["stock_name"],
+          prms["args"][0][0],
+          prms["args"][0][1],
+          prms["args"][1][0],
+          prms["args"][1][1],
+          prms["args"][2][0],
+          prms["args"][2][1],
+          prms["args"][3][0],
+          prms["args"][3][1])
+          
         return json.loads(urllib.request.urlopen(base_uri + query).read())
     elif req == "ChartData":
         query = "/ChartData.aspx/IndexHistoricalAll?period=60&from={}&to={}&endeks={}.E.BIST"
