@@ -1,7 +1,8 @@
 # BIST100-FScore
 Calculate Piotroski F Score for BIST 100 Stocks with Is Yatirim API
 
-via@https://github.com/urazakgul/X-posts-python/tree/main/X-post10
+via@<br>
+https://github.com/urazakgul/X-posts-python/tree/main/X-post10<br>
 https://github.com/bademirci/Web-Scraping-Python/tree/main 
 
 Environment:
